@@ -1,6 +1,8 @@
 import org.w3c.dom.ls.LSOutput;
 
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 import java.util.stream.IntStream;
@@ -10,7 +12,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        String[] stringAborigens = ("saasf gsdgd jgjj hjlhjk qrwr ttuttyur uouop p[io]i " +
+        String[] stringAborigens = ("double double double jgjj hjlhjk qrwr ttuttyur uouop p[io]i " +
                 "fsdf fsassdf sasvnmnvk fdl;fdl fdkfdnfk dfklfdlfmd dfklddl " +
                 "dflkdkfa []poi bnm, as fsdfsdf sfaadgytr kiobjek fnkdls fknsdklfnskl uinxmalssnb dslkmkdn").split(" ");
 
@@ -22,11 +24,11 @@ public class Main {
     }
 
     private static void SortWords(String[] stringAborigens) {
-
-        IntStream.range(0, stringAborigens.length)
-                .sorted()
-                .mapToObj(x -> String.format("%s на аборигенском, это %c", stringAborigens[x], 'A' + x))
+        final int[] cnt = {0};
+        Arrays.stream(stringAborigens)
+                .distinct()// оператор устранения дубликатов
+                .map(x -> String.format("%s на аборигенском, это %c", x, 'A' + cnt[0]++))
+                .sorted()//сортировка аборигенских слов по алфавиту
                 .forEach(System.out::println);
-
     }
 }
