@@ -3,6 +3,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import java.util.stream.IntStream;
@@ -26,7 +27,7 @@ public class Main {
         Arrays.stream(stringAborigens)
                 .distinct()// оператор устранения дубликатов
                 .map(x -> String.format("%s на аборигенском, это %c", x, 'A' + cnt[0]++))//преобразуем в соответствующие строки
-                .sorted()//сортировка аборигенских слов по алфавиту
+                .sorted(Comparator.naturalOrder())//сортировка аборигенских слов по алфавиту
                 .forEach(System.out::println);
     }
 }
